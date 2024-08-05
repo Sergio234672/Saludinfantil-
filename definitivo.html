@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pequeños Héroes de la Salud</title>
+    <style>
+        /* Variables CSS para colores y tipografía */
+        :root {
+            --primary-color: #ff6f61;
+            --secondary-color: #ffca28;
+            --gradient-start: #33ccff; /* Color inicial del gradiente */
+            --gradient-end: #33ff66; /* Color final del gradiente */
+            --font-main: 'Arial', sans-serif;
+        }
+
+        /* Estilos globales */
+        body {
+            font-family: var(--font-main);
+            color: #333;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end)); /* Gradiente de fondo */
+            background-size: cover; /* Asegura que el gradiente cubra todo el fondo */
+            background-attachment: fixed; /* Fija el fondo para el efecto parallax */
+            transition: background-color 0.3s, color 0.3s; /* Transición suave */
+        }
+
+        header {
+            text-align: center;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.8); /* Fondo semi-transparente */
+            border-bottom: 2px solid var(--primary-color);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9); /* Fondo blanco semi-transparente para los elementos */
+            border-radius: 10px; /* Bordes redondeados */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra de caja */
+        }
+
+        /* Encabezados */
+        h1, h2, h3 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Sombra de texto */
+        }
+
+        h1 {
+            font-size: 2.5em;
+            letter-spacing: 2px; /* Espaciado de letras */
+        }
+
+        h2 {
+            font-size: 2em;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            font-size: 1.75em;
+        }
+
+        /* Botones */
+        .button {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+            font-size: 1.1em;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra de caja */
+        }
+
+        .button:hover {
+            background-color: #ff8a76;
+            transform: scale(1.1); /* Efecto de aumento */
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* Sombra de caja más pronunciada */
+        }
+
+        /* Tarjetas */
+        .card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 20px 0;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px); /* Efecto de elevación */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada */
+        }
+
+        /* Imágenes */
+        img {
+            max-width: 100%;
+            border-radius: 10px;
+            transition: opacity 0.3s, filter 0.3s;
+        }
+
+        img:hover {
+            opacity: 0.8;
+            filter: grayscale(50%); /* Efecto de escala de grises parcial */
+        }
+
+        /* Enlaces */
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: #ff8a76;
+            text-decoration: underline;
+        }
+
+        /* Listas */
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            background: white; /* Fondo blanco para elementos de lista */
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        li:hover {
+            background-color: #e0f7fa; /* Efecto de cambio de color al pasar el ratón */
+            transform: translateX(5px); /* Efecto de desplazamiento lateral */
+        }
+
+        /* Animación de fondo */
+        @keyframes moveBg {
+            0% { background-position: 0 0; }
+            100% { background-position: 100% 100%; }
+        }
+
+        .animated-bg {
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            background-size: 200% 200%;
+            animation: moveBg 5s infinite linear;
+        }
+
+        /* Formularios */
+        input[type="text"], input[type="password"], textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        input[type="text"]:focus, input[type="password"]:focus, textarea:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 5px rgba(255, 111, 97, 0.5); /* Sombra de enfoque */
+        }
+
+        input[type="radio"], input[type="checkbox"] {
+            margin-right: 10px;
+        }
+
+        /* Efectos de Hover y Focus */
+        .hover-effect:hover {
+            background-color: var(--secondary-color);
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .focus-effect:focus {
+            outline: 2px solid var(--primary-color);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Pequeños Héroes de la Salud</h1>
+    </header>
+    <div class="container">
+        <section>
+            <p>Bienvenidos a Pequeños Héroes de la Salud, una iniciativa dedicada a educar a los niños sobre la importancia de la salud y el bienestar. Aquí encontrarás información sobre diversas enfermedades y cómo prevenirlas.</p>
+            
+            <h2>Enfermedades Respiratorias</h2>
+            <p>Las enfermedades respiratorias afectan las vías respiratorias y los pulmones, y pueden ser causadas por infecciones, alergias o condiciones crónicas como el asma. Es importante conocer los síntomas y cómo prevenirlas.</p>
+            <video controls>
+        <source src="video 1.mp4" type="video/mp4">
+        Tu navegador no soporta la reproducción de video.
+    </video>
+            <h2>Medicamentos Comunes</h2>
+            <p>Existen varios medicamentos que se utilizan para tratar enfermedades comunes en los niños. Es fundamental seguir las indicaciones del médico y saber cómo administrar estos medicamentos correctamente.</p>
+           <video controls>
+        <source src="video 2.mp4" type="video/mp4">
+        Tu navegador no soporta la reproducción de video.
+    </video>
+            <h2>Enfermedades Más Peligrosas</h2>
+            <p>Algunas enfermedades pueden ser más graves y requieren atención médica inmediata. Conocer los síntomas de estas enfermedades y cómo actuar puede salvar vidas.</p>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/AMaJupXYDU0" frameborder="0" allowfullscreen></iframe>
+            
+            <h2>El Sistema Inmunológico</h2>
+            <p>El sistema inmunológico es la defensa natural del cuerpo contra las infecciones. Aprender cómo funciona y cómo fortalecerlo puede ayudar a mantenerse saludable.</p>
+            <iframe width="560" height="315" src<iframe width="560" height="315" src="https://www.youtube.com/embed/1D-cvl67VOk" frameborder="0" allowfullscreen></iframe>
+            
+            <h2>Las Caries</h2>
+            <p>Las caries son áreas dañadas en los dientes que se convierten en pequeños agujeros. La buena higiene bucal y las visitas regulares al dentista pueden prevenirlas.</p>
+           <video controls>
+        <source src="video 3.mp4" type="video/mp4">
+        Tu navegador no soporta la reproducción de video.
+    </video>
+            <h2>Higiene Personal</h2>
+            <p>La higiene personal es crucial para mantener la salud y prevenir enfermedades. Aprender hábitos de higiene desde una edad temprana es fundamental.</p>
+           <video controls>
+        <source src="video 1.mp4" type="video/mp4">
+        Tu navegador no soporta la reproducción de video.
+    </video>
+            </section>
+    </div>
+</body>
+</html>
